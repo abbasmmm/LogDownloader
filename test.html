@@ -1,0 +1,42 @@
+﻿<html>
+<head>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#btn').click(function() {
+                $.get('http://localhost:61860/api/values', function(data) {
+                    console.log(data)
+                    console.log(data[0])
+                    console.log(typeof(data));
+                })
+            });
+
+            $('#btn2').click(function () {
+                //$.get('http://localhost:61860/api/values/1', function (data) {
+                //    console.log(data.Name)
+                //    console.log(typeof (data));
+                //})
+
+                $.ajax({     
+                    type: "GET",
+                    url: "http://localhost:61860/api/values/1",
+                    headers: {          
+                        Accept: "application/json; charset=utf-8",         
+                    },     
+                    success : function(data) {  
+                        console.log(data.Name)
+                        console.log(typeof (data));
+                    }
+                });
+            });
+
+
+        })
+    </script>
+</head>
+<body>
+    <button id="btn">btn</button>
+    <button id="btn2">btn 2</button>
+
+</body>
+</html>
